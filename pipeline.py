@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS {self.schema}.{self.tablename} (
         ### Implement row-insertion here
         self.connection.connection.commit()
         """
-    def email_sos(self, error_message:str) -> None:
+    def call_sos(self, error_message:str) -> None:
         '''Notify errors remotely.'''
         ### Implement email-notifications here.
         pass
@@ -104,7 +104,7 @@ def main() -> None:
         pipeline.transform()
         pipeline.load()
     except Exception as error:
-        pipeline.email_sos(error)
+        pipeline.call_sos(error)
     finally:
         connection.close()
 
